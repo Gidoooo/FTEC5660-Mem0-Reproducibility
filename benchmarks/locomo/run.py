@@ -754,9 +754,11 @@ async def async_main() -> None:
         evidence_lookup = load_evidence_lookup(dataset_path)
         print(f"  Evidence lookup: {len(evidence_lookup)} entries")
 
-    answerer = LLMClient(model=args.answerer_model, provider=args.provider, rpm=args.rpm)
+    answerer = LLMClient(model=args.answerer_model, provider=args.provider, api_key=os.getenv("DEEPSEEK_API_KEY"),
+    base_url=os.getenv("DEEPSEEK_BASE_URL"), rpm=args.rpm,)
     judge_provider = args.judge_provider or args.provider
-    judge_llm = LLMClient(model=args.judge_model, provider=judge_provider, rpm=args.rpm)
+    judge_llm = LLMClient(model=args.judge_model, provider=judge_provider,api_key=os.getenv("DEEPSEEK_API_KEY"),
+    base_url=os.getenv("DEEPSEEK_BASE_URL"), rpm=args.rpm,)
 
     if args.evaluate_only:
         expected_items = expected_locomo_question_items(

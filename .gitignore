@@ -38,3 +38,13 @@ tsconfig.tsbuildinfo
 next-env.d.ts
 mem0-config.yaml
 mem0-config-*.yaml
+
+# Local secrets and environment
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.pyc
+*.bak
+.DS_Store
